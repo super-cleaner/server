@@ -1,6 +1,6 @@
 from django.urls import path
 
-app_name = 'game'
+app_name = 'record'
 
 urlpatterns = [
 
