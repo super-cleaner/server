@@ -2,7 +2,7 @@ from django.db import models
 
 class Trash(models.Model):
     name = models.CharField(max_length=64)
-    trash_category_id = models.ForeignKey('TrashCategory', on_delete=models.CASCADE)
+    trash_category = models.ForeignKey('TrashCategory', on_delete=models.CASCADE)
     description = models.CharField(max_length=512)
     image_url = models.CharField(max_length=512)
     difficulty = models.IntegerField()

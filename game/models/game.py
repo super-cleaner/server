@@ -8,8 +8,8 @@ class Game(models.Model):
         db_table = 'games'
 
 class Record(models.Model):
-    game_id = models.ForeignKey('Game', on_delete=models.CASCADE)
-    trash_id = models.ForeignKey('Trash', on_delete=models.CASCADE)
+    game = models.ForeignKey('Game', on_delete=models.CASCADE)
+    trash = models.ForeignKey('Trash', on_delete=models.CASCADE)
     is_answer = models.BooleanField(null=True)
 
     class Meta:
