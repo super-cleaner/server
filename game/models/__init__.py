@@ -1,2 +1,2 @@
-from .game import Record
+from .game import Game
 from .trash import Trash, TrashCategory

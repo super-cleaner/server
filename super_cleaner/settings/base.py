@@ -48,6 +48,7 @@ PACKAGE_APPS = [
 
 PROJECT_APPS = [
     'game',
+    'record',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PACKAGE_APPS + PROJECT_APPS
