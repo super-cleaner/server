@@ -1,1 +1,1 @@
-from .game import Record
+from .record import Record
