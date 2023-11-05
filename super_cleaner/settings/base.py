@@ -44,16 +44,10 @@ DJANGO_APPS = [
 
 PACKAGE_APPS = [
     'rest_framework',
-    # 'rest_framework.authtoken',
-    # 'dj_rest_auth',
-    # 'dj_rest_auth.registration',
-    # 'allauth',
-    # 'allauth.account',
-    # 'rest_framework_simplejwt',
-    # 'drf_yasg',
 ]
 
 PROJECT_APPS = [
+    'game',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PACKAGE_APPS + PROJECT_APPS
