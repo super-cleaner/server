@@ -6,17 +6,23 @@ from django.http import JsonResponse
 from .models.record import Record
 from .models.trash import Trash, TrashCategory
 from game.models.game import Game
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
+import json
+
 
 # Create your views here.
 
-
+@csrf_exempt
 def main(request):
     if request.method == 'POST':
-        game_id=request.POST.get('game_id')
-        trash_id=request.POST.get('trash_id')
+        data = json.loads(request.body)
+        game_id=data.get('game_id')
+        trash_id=data.get('trash_id')
 
         trash=get_object_or_404(Trash, id=trash_id)
-        game= get_object_or_404(Game, id_game_id)
+        game = get_object_or_404(Game, id=game_id)
 
         record=Record.objects.create(game=game, trash=trash)
 
@@ -27,16 +33,17 @@ def main(request):
             }
         }
 
-        return JsonResponse(quiz_data)
+        return JsonResponse(quiz_data, status=200)
     
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
-
+@csrf_exempt
 def check(request):
     if request.method == 'POST':
-        game_id=request.POST.get('game_id')
-        trash_id=request.POST.get('trash_id')
-        player_trash_category_id=request.POST.get('player_trash_category_id')
+        data = json.loads(request.body)
+        game_id=data.get('game_id')
+        trash_id=data.get('trash_id')
+        player_trash_category_id=data.get('player_trash_category_id')
 
         game=get_object_or_404(Game,id=game_id)
         trash=get_object_or_404(Trash, id=trash_id)
@@ -55,11 +62,11 @@ def check(request):
             }
         }
 
-        return JsonResponse(quiz_check_data)
+        return JsonResponse(quiz_check_data, status=200)
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
-
+@csrf_exempt
 def result(request, game_id):
     if request.method =='GET':
         game=get_object_or_404(Game, id=game_id)
@@ -88,7 +95,7 @@ def result(request, game_id):
             'result_list':result_list,
         }
 
-        return JsonResponse(quiz_result_data)
+        return JsonResponse(quiz_result_data, status=200)
 
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
