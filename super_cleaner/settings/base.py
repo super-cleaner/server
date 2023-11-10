@@ -29,6 +29,9 @@ SECRET_KEY = config('SECRET_KEY')
 ALLOWED_HOSTS = ['*']
 CORS_ALLOWED_ORIGINS = [
 	'http://localhost:3000',
+    'https://super-cleaner.github.io/client/',
+    'https://super-cleaner.github.io',
+    'https://super-cleaner.github.io/client',
 ]
 
 # Application definition
